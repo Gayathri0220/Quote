@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Quote</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="top">
+        <nav>
+            <div class="logo"><img src="logo.png"></div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="lang-select">
+                <select>
+                    <option value="en">English</option>
+                    <option value="f">French</option>
+                    <option value="es">Korean</option>
+                </select>
+            </div>
+        </nav>
+        <div class="contact-bar">
+            <div class="contact-info">
+                <p><i class="fa fa-envelope" aria-hidden="true"></i> field@example.com</p>
+                <p><i class="fa fa-phone" aria-hidden="true"></i> +123 456 7890</p>
+            </div>
+            <div class="auth-links">
+                <a href="#">Login</a>
+                <a href="#">Sign Up</a>
+            </div>
+        </div>
+        <section class="intro">
+            <h1>Request a Quote</h1>
+            <p>Fill out the form below to get a quote for our services.</p>
+        </section>
+    </header>
+    <main>
+        
+        <section class="form-section">
+            <form action="#">
+                <div class="form-grid">
+                    <div class="form-left">
+                        <label for="name">Your name</label>
+                        <input type="text" placeholder="Enter your name" id="name" name="name" required>
+
+                        <label for="phone">Phone number</label>
+                        <input type="tel"placeholder="Enter your mobile number" id="phone" name="phone" required>
+
+                        <label for="project-type">Project Type</label>
+                        <select id="project-type" name="project-type" required>
+                            <option value="">Select Project Type</option>
+                            <option value="web-development">Web Development</option>
+                            <option value="mobile-app">Mobile App</option>
+                            <option value="seo">SEO</option>
+                        </select>
+                        <label for="time">Maximum time for the project</label>
+                        <input type="tel" id="time" name="time" required>
+
+                    </div>
+                    <div class="form-right">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" required>
+                        
+                        <label for="phone">Estimate Budget</label>
+                        <input type="tel" id="budget" name="budget" required>
+
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+                </div>
+                <div class="form-upload">
+                    <label for="file-upload" class="upload-label">Upload File</label>
+                     <div id="drop-area">
+                        <p>Drag and drop file here</p>
+                        
+                        <button>
+                        <input type="file" id="file-upload" name="file-upload" required></button>
+                   
+                    </div>
+                </div>
+                <div class="form-message">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <div class="form-submit">
+                    <button type="submit">Request a Quote</button>
+                </div>
+            </form>
+        </section>
+    </main>
+   
+    <script>
+    
+
+document.addEventListener('DOMContentLoaded', () => {
+    const dropArea = document.getElementById('drop-area');
+    const fileInput = document.getElementById('file-upload');
+    const dropText = dropArea.querySelector('p');
+
+    dropArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropArea.classList.add('dragover');
+    });
+
+    dropArea.addEventListener('dragleave', (e) => {
+        dropArea.classList.remove('dragover');
+    });
+
+    dropArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropArea.classList.remove('dragover');
+        const files = e.dataTransfer.files;
+        fileInput.files = files;
+    });
+
+    dropArea.addEventListener('click', () => {
+        fileInput.click();
+    });
+
+    fileInput.addEventListener('change', () => {
+        const files = fileInput.files;
+        dropArea.textContent = files.length > 0 ? files[0].name : 'Drag and drop file here';
+    });
+});
+
+    </script>
+</body>
+</html>
+
